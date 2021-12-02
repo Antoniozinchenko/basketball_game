@@ -1,13 +1,18 @@
+import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flame/palette.dart';
 
 import 'ball.dart';
 
-class GameApp extends FlameGame {
+class GameApp extends FlameGame with HasDraggables, HasCollidables {
+  @override
+  Color backgroundColor() {
+    return const Color(0xFF888888);
+  }
+
   @override
   Future<void>? onLoad() {
-    final ball = Ball()
-      ..x = size.x / 4
-      ..y = size.y * 0.8;
+    final ball = Ball();
     add(ball);
     return super.onLoad();
   }
